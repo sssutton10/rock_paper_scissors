@@ -1,0 +1,130 @@
+html, body {
+    height: 100%;
+    font-size: 62.5%;
+    color: rgb(5, 123, 226);
+}
+
+body {
+    padding: 0;
+    margin: 0;
+}
+
+.page-container {
+    position: relative;
+    min-height: 100%;
+}
+
+.content-wrap {
+    padding-bottom: 3rem;
+}
+
+h1 {
+    text-align: center;
+    font-size: 8rem;
+    color: black;
+    background-color: rgb(5, 123, 226);
+    text-shadow: 6px;
+    margin-bottom: .5em;
+    padding: 16px 0;
+    margin: auto;
+}
+
+/* Main Game Area */
+.sign-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sign-container h2 {
+    font-size: 6rem;
+    padding: .25em 2em;
+    margin-bottom: 0;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.sign-container h3 {
+    font-size: 4rem;
+}
+
+/* Weapon Choices */
+.sign-row {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 40%;
+}
+
+.sign-choice {
+    border: 2px solid black;
+    padding: 8px;
+    border-radius: 8px;
+}
+
+.sign-choice:hover {
+    background-color: rgb(243, 237, 237);
+}
+
+img{
+    width: 100px;
+    aspect-ratio: 1/1;
+}
+
+/* Score */
+.score-container {
+    font-size: 3rem;
+    font-style: italic;
+    display: flex;
+    justify-content: center;
+    margin-top: 4rem;
+}
+
+.score {
+    margin-right: 1em;
+}
+
+/* Result and game end message*/
+.result-message {
+    text-align: center;
+    font-size: 3rem;
+    margin-top: 6rem;
+    color: black;
+    visibility: hidden;
+}
+
+/* Play Again Button */
+.playButton-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.playButton-container > h3 {
+    font-size: 3rem;
+    color: rgb(5, 123, 226);
+}
+
+#playButton {
+    width: 10%;
+    font-size: 2rem;
+    min-width: 48px;
+    margin-bottom: 24px;
+}
+
+/* Footer */
+footer {
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    font-size: 2rem;
+    height: 3rem;
+    background-color: rgb(5, 123, 226);
+    color: black;
+    margin-top: auto;
+}
+
