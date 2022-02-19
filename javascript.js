@@ -1,13 +1,19 @@
 'use-strict'
 
+// Global variables that will be used
+const valid_choices = ['rock', 'paper', 'scissors']
+
+let playerScore, computerScore
+playerScore = computerScore = 0
+
+let roundNum = 1
+
 function computerPlay(){
     let randVal = Math.floor(Math.random()*3)
     if (randVal == 0){return 'Rock'}
     else if (randVal == 1){return 'Paper'}
     return 'Scissors'
 }
-
-const valid_choices = ['rock', 'paper', 'scissors']
 
 function singleGame(playerSelection, computerSelection){
     let pS = playerSelection.toLowerCase()
@@ -22,12 +28,10 @@ function singleGame(playerSelection, computerSelection){
     }
 }
 
-let playerScore, computerScore
-playerScore = computerScore = 0
-
-let roundNum = 1
-
 function changeScore(){
+
+    if(playerScore > 4 || computerScore > 4) {return true}
+
     gameResults = singleGame(playerSelection=this.dataset.sign, computerSelection=computerPlay())
 
     let resultMessage = document.querySelector('.result-message')
@@ -52,6 +56,18 @@ function changeScore(){
     checkGameEnd()
 }
 
+// Add changeScore function to sign icons as events
+let signChoice = document.querySelectorAll('.sign-choice')
+signChoice.forEach(element => element.addEventListener('click', changeScore))
+
+function checkGameEnd(){
+    if(playerScore > 4 || computerScore > 4){
+        endGameScreen(playerScore)
+    }
+}
+
+// Once someone reaches 5, we want to display the outcome and ask if they want to play again.
+// Weapon choice buttons should be disabled here until a new game has started
 function endGameScreen(pScore){
     let resultMessage = document.querySelector('.result-message')
     if (pScore > 4){resultMessage.textContent = 'You Won! Congrats!'}
@@ -73,10 +89,7 @@ function endGameScreen(pScore){
     playAgainBox.append(playAgainMessage)
     playAgainBox.append(playAgainConfirm)
 
-    // let signChoices = document.querySelectorAll('.sign-choice')
-    // signChoice.forEach(element => element.removeEventListener(changeScore)); this breaks it for some reason
-
-    playAgainConfirm.onclick = function() {resetRPS(playAgainBox, playAgainMessage, playAgainConfirm)}
+    playAgainConfirm.onclick = function() {resetRPS(playAgainBox, playAgainMessage, playAgainConfirm)};
 }
 
 function resetRPS(box, message, confirm){
@@ -84,7 +97,10 @@ function resetRPS(box, message, confirm){
     message.remove()
     box.remove()
 
-    let pScoreElement, cScoreElement, roundHead, resultMessage, signChoices
+    playerScore = computerScore = 0
+    roundNum = 1
+
+    let pScoreElement, cScoreElement, roundHead, resultMessage
     pScoreElement = document.querySelector('.score.player')
     pScoreElement.textContent = 'Player Score: 0'
 
@@ -96,17 +112,6 @@ function resetRPS(box, message, confirm){
 
     resultMessage = document.querySelector('.result-message')
     resultMessage.style.visibility = 'hidden'
-
-    // signChoices = document.querySelectorAll('.sign-choice')
-    // signChoice.forEach(element => element.addEventListener('click', changeScore)); this breaks it for some reason
 }
 
-let signChoice = document.querySelectorAll('.sign-choice')
-signChoice.forEach(element => element.addEventListener('click', changeScore))
 
-function checkGameEnd(){
-    if(playerScore > 4 || computerScore > 4){
-        endGameScreen(playerScore)
-        playerScore = computerScore = 0
-    }
-}
