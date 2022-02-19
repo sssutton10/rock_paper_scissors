@@ -24,9 +24,8 @@ h1 {
     color: black;
     background-color: rgb(5, 123, 226);
     text-shadow: 6px;
-    margin-bottom: .5em;
+    margin: auto auto.5em;
     padding: 16px 0;
-    margin: auto;
 }
 
 /* Main Game Area */
@@ -82,6 +81,37 @@ img{
 
 .score {
     margin-right: 1em;
+}
+
+/* Result History Table */
+.result-container {
+    position: absolute;
+    left: 0;
+    top: 20%;
+    height: 50%;
+    font-size: 1.5rem;
+    width: 20%;
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+
+.result-history {
+    text-align: center;
+    table-layout: fixed;
+    width: 100%;
+}
+
+#main-table-head {
+    font-size: 2rem;
+    background-color: gray;
+    color: black;
+}
+
+td {
+    color: black;
+    padding: 2%;
 }
 
 /* Result and game end message*/
